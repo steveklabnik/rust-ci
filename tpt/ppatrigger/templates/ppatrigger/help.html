@@ -15,14 +15,13 @@
             Here's an example using the Rust package manager <a href="http://crates.io/">cargo</a> for building. It installs cargo from Corey Richardson's <a href="https://launchpad.net/~cmrx64/+archive/cargo">PPA</a>. Using cargo for building is not required.
           </p>
 <pre>
-before_install:
-  - sudo add-apt-repository --yes ppa:hansjorg/rust
-  - sudo add-apt-repository --yes ppa:cmrx64/cargo
-  - sudo apt-get update -qq
 install:
-  - sudo apt-get install -qq rust-nightly cargo
+  - curl http://www.rust-lang.org/rustup.sh | sudo sh -
 script:
-  - cargo build
+  - cargo build --verbose
+  - cargo test --verbose
+env:
+  - LD_LIBRARY_PATH=/usr/local/lib
 </pre>
         </div>
       </div>
